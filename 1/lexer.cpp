@@ -15,7 +15,23 @@ int lexan()
         }
         else if (isdigit(t)) {
             ungetc(t, stdin);
-            std::cin >> t;
+            std::cin >> tokenval;
+            return NUM;
+        }
+        else if (isalpha(t)) {
+            std::string tmp;
+            std::cin >> tmp;
+            int p = lookup(tmp);
+            if (p == -1) {
+                p = insert(tmp, ID);
+            }
+            tokenval = p;
+            return symtable[p].getToken();
+        }
+        else if (t == EOF)
+            return DONE;
+        else {
+            tokenval = 0;
             return t;
         }
     }
