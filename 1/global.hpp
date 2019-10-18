@@ -13,9 +13,9 @@
 #define ID 259
 #define DONE 260
 
-static int tokenval;
-static int lineno = 1;
-static int lookahead;
+extern int tokenval;
+extern int lineno;
+extern int lookahead;
 
 class entry
 {
@@ -24,13 +24,13 @@ private:
     int token;
 
 public:
-    const std::string &getLex();
+    const std::string getLex();
     const int getToken();
     entry();
     entry(std::string s, int tok) : lex(s), token(tok){};
 };
 
-static std::vector<entry> symtable;
+extern std::vector<entry> symtable;
 
 int lexan();
 int lookup(const std::string &s);

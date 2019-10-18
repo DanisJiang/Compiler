@@ -1,7 +1,13 @@
 #include "global.hpp"
 
+int tokenval;
+int lineno = 1;
+int lookahead;
+std::vector<entry> symtable;
+
 void emit(int t, int tval)
 {
+    // printf("%c\n", t);
     switch (t)
     {
     case '+': case '-': case '*': case '/':
